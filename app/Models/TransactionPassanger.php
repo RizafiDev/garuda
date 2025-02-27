@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransactionPassanger extends Model
 {
-    protected $fillable = [
-        'transaction_id',
-        'flight_Seat_id',
-        'name',
-        'date_of_birth',
-        'nationality',
-    ];
     use HasFactory;
+
+    protected $fillable = ['transaction_id', 'flight_seat_id', 'name', 'date_of_birth', 'nationality'];
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
+
+    public function flightSeat()
+    {
+        return $this->belongsTo(FlightSeat::class);
+    }
 }

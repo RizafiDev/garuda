@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Facility extends Model
 {
-    protected $fillable = [
-        'imager',
-        'name',
-        'description'
-    ];
     use HasFactory;
+
+    protected $fillable = ['image', 'name', 'description'];
+
+    public function flightClasses()
+    {
+        return $this->belongsToMany(FlightClass::class, 'flight_class_facility');
+    }
 }
